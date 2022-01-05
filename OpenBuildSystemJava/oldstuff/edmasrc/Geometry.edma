@@ -1,0 +1,255 @@
+ValueDomain Bool : Boolean
+ValueDomain UnsignedScalar : Double[0.0..MAX]
+ValueDomain Scalar : Double[MIN..MAX]
+ValueDomain AnyInt : Integer[MIN..MAX]
+ValueDomain UnsignedInt : Integer[0..MAX]
+
+///////////////////////////////////////////////////
+// Vector2D
+///////////////////////////////////////////////////
+ValueDomain Vector2D : Struct
+{
+    x : Scalar,
+    y : Scalar
+}
+
+///////////////////////////////////////////////////
+// Dimensions2D
+///////////////////////////////////////////////////
+
+ValueDomain Dimension2D : Struct
+{
+    x : UnsignedScalar,
+    y : UnsignedScalar
+}
+
+///////////////////////////////////////////////////
+// Vector3D
+///////////////////////////////////////////////////
+ValueDomain Vector3D : Struct
+{
+    x : Scalar,
+    y : Scalar,
+    z : Scalar
+}
+
+///////////////////////////////////////////////////
+// Dimension3D
+///////////////////////////////////////////////////
+
+ValueDomain Dimension3D : Struct
+{
+    x : UnsignedScalar,
+    y : UnsignedScalar,
+    z : UnsignedScalar
+}
+
+/////////////////////////////////////////////////////
+// 2D shapes
+/////////////////////////////////////////////////////
+ValueDomain Vector2DList : List<Vector2D>
+ValueDomain Path2D : List<UnsignedInt>
+ValueDomain Path2DList : List<Path2D>
+
+ValueDomain Circle2D : Struct
+{
+    diameter : UnsignedScalar,
+    angularResolution : UnsignedInt
+}
+
+ValueDomain Rect2D : Struct
+{
+    dimension : Dimension2D
+}
+
+ValueDomain SimplePolygon : Struct
+{
+    vertices : Vector2DList
+}
+
+ValueDomain PathPolygon : Struct
+{
+    vertices : Vector2DList,
+    paths : Path2DList
+}
+
+ValueDomain Polygon2D : OneOf<SimplePolygon, PathPolygon>
+
+ValueDomain Shape2D : OneOf<Polygon2D, Circle2D, Rect2D>
+
+/////////////////////////////////////////////////////
+// 3D shapes
+/////////////////////////////////////////////////////
+
+ValueDomain Sphere3D : Struct
+{
+    diameter : UnsignedScalar,
+    angularResolution : UnsignedInt
+}
+
+ValueDomain Box3D : Struct
+{
+    dimensions : Dimension3D
+}
+
+ValueDomain Cylinder3D : Struct
+{
+    diameter : UnsignedScalar,
+    height : UnsignedScalar,
+    angularResolution : UnsignedInt
+}
+
+ValueDomain Cone3D : Struct
+{
+    bottomDiameter : UnsignedScalar,
+    topDiameter : UnsignedScalar,
+    height : UnsignedScalar,
+    angularResolution : UnsignedInt
+}
+
+//ToDO: Cylinder segment, cone segment, flat ring, flat ring segment
+
+ValueDomain Shape3D : OneOf<Sphere3D, Box3D, Cylinder3D, Cone3D>
+
+////////////////////////////////////////////////////////////
+// Atomic 2D transforms
+///////////////////////////////////////////////////////////
+
+ValueDomain Translate2D : Struct
+{
+    t : Vector2D,
+    children : Geometry2DList
+}
+
+ValueDomain Rotate2D : Struct
+{
+    angle : Scalar,
+    children : Geometry2DList
+}
+
+ValueDomain Scale2D : Struct
+{
+    s : Vector2D,
+    children : Geometry2DList
+}
+
+ValueDomain Transform2Dto2D : OneOf<Translate2D, Rotate2D, Scale2D>
+
+/////////////////////////////////////////////////////////////
+// Operations 2D to 2D
+/////////////////////////////////////////////////////////////
+
+ValueDomain Union2D : Struct
+{
+    children : Geometry2DList
+}
+
+ValueDomain Intersection2D :  Struct
+{
+    children : Geometry2DList
+}
+
+ValueDomain Difference2D : Struct
+{
+    children : Geometry2DList
+}
+
+ValueDomain Hull2D : Struct
+{
+    children : Geometry2DList
+}
+
+ValueDomain Operation2Dto2D : OneOf<Union2D, Intersection2D, Difference2D, Hull2D>
+
+/////////////////////////////////////////////////////////////
+// Operations 3D to 2D
+/////////////////////////////////////////////////////////////
+
+ValueDomain Projection3Dto2D : Struct
+{
+    geometry : Geometry3D,
+    cut : Bool
+}
+
+ValueDomain Geometry2D : OneOf<Geometry2DList, Shape2D, Transform2Dto2D, Operation2Dto2D, Projection3Dto2D>
+
+ValueDomain Geometry2DList : List<Geometry2D>
+
+////////////////////////////////////////////////////////////
+// Atomic 3D transforms
+///////////////////////////////////////////////////////////
+
+ValueDomain Translate3D : Struct
+{
+    t : Vector3D,
+    children : Geometry3DList
+}
+
+ValueDomain Rotate3D : Struct
+{
+    r : Vector3D,
+    children : Geometry3DList
+}
+
+ValueDomain Scale3D : Struct
+{
+    s : Vector3D,
+    children : Geometry3DList
+}
+
+ValueDomain Mirror3D : Struct
+{
+    planeNormal : Vector3D,
+    children : Geometry3DList
+}
+
+ValueDomain Transform3Dto3D : OneOf<Translate3D, Rotate3D, Scale3D, Mirror3D>
+
+/////////////////////////////////////////////////////////////
+// Operations 3D to 3D
+/////////////////////////////////////////////////////////////
+ValueDomain Geometry3DList : List<Geometry3D>
+
+ValueDomain Union3D : Struct
+{
+    children : Geometry3DList
+}
+
+ValueDomain Intersection3D :  Struct
+{
+    children : Geometry3DList
+}
+
+ValueDomain Difference3D : Struct
+{
+    children : Geometry3DList
+}
+
+ValueDomain Hull3D : Struct
+{
+    children : Geometry3DList
+}
+
+ValueDomain Operation3Dto3D : OneOf<Union3D, Intersection3D, Difference3D, Hull3D>
+
+ValueDomain LinearExtrude : Struct
+{
+    geometry : Geometry2D,
+    height : Scalar,
+    twist : Scalar,
+    scale : Scalar,
+    slices : UnsignedInt,
+    convexity : UnsignedInt
+}
+
+ValueDomain RotateExtrude : Struct
+{
+    geometry : Geometry2D,
+    angle : Scalar,
+    angularResolution : UnsignedInt,
+    convexity : UnsignedInt
+}
+
+ValueDomain Operation2Dto3D : OneOf<LinearExtrude, RotateExtrude>
+
+ValueDomain Geometry3D : OneOf<Geometry3DList, Shape3D, Transform3Dto3D, Operation3Dto3D, Operation2Dto3D> //ToDo add Transform2Dto3D>

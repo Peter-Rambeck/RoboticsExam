@@ -1,0 +1,9 @@
+use <core/shapes_3d/box/Box.scad>
+use <core/shapes_3d/cone/Cone.scad>
+use <core/shapes_3d/cone/Cone_Segment.scad>
+use <core/shapes_3d/cylinder/Cylinder.scad>
+use <core/shapes_3d/cylinder/Cylinder_Segment.scad>
+use <core/shapes_3d/flat_ring/Flat_Ring.scad>
+use <core/shapes_3d/flat_ring/Flat_Ring_Segment.scad>
+use <core/shapes_3d/torus/Torus.scad>
+use <core/shapes_3d/torus/Torus_Segment.scad>
