@@ -1,4 +1,4 @@
-package org.abstractica.openbuildsystem.library.parts.printed.motors;
+package org.abstractica.openbuildsystem.library.parts.printed.studyGroup;
 
 import org.abstractica.openbuildsystem.core.Core;
 import org.abstractica.openbuildsystem.core.Geometry3D;

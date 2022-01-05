@@ -1,16 +1,15 @@
 package org.abstractica.openbuildsystem.library.parts.printed.Motors;
 
-import org.abstractica.openbuildsystem.core.*;
+import org.abstractica.openbuildsystem.core.Core;
+import org.abstractica.openbuildsystem.core.Geometry3D;
+import org.abstractica.openbuildsystem.core.Node3D;
 import org.abstractica.openbuildsystem.openscad.CodeBuilder;
 import org.abstractica.openbuildsystem.openscad.OpenSCADGenerator;
-
 
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-
-import javax.imageio.plugins.tiff.GeoTIFFTagSet;
 
 import static java.lang.Math.sqrt;
 
