@@ -52,34 +52,7 @@ public class SevenLongPropellerSquare {
     int centerHoleMotorFragments = 64;
 
 
-    /*
 
-    // Breadholder cube
-    int BreadholderCubeX = 83;
-    int BreadholderCubeY = 55;
-    int BreadholderHeight = 9;
-
-    // Sideholes cube
-    int SideholesCubeX = 3;
-    int SideholesCubeY = 3;
-    double SideholesHeight = 9.9;
-
-    // Sidewing cubes
-    int SidewingCubeX = 10;
-    int SidewingCubeY = 30;
-    double SidewingHeight = 12;
-
-    // Bottom Cylinder holes
-    double bottomHeight = 124;
-    double bottomRadus = 3.4;
-    int bottomFragments = 64;
-
-    // Top Cylinder holes
-    double topHeight = 4;
-    double topRadiusDiameter = radiusDiameter;
-    int topFragments = 6;
-
-     */
 
 
     public SevenLongPropellerSquare() throws IOException {
@@ -185,22 +158,8 @@ public class SevenLongPropellerSquare {
         res.add(translateSmallScrewholesForMotorarmsFourthLeft);
         // Small screwholes for motorarms ends
 
-
-
-
-
         codeBuilder(res);
 }
-
-
-
-
-
-
-
-
-
-
 
         public void codeBuilder(Geometry3D res) throws IOException {
             geometry3D = res;

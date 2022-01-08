@@ -61,7 +61,7 @@ public class BatteryTopHolder {
 
     // Cylinder holes top cylinder
     double topD = 2*(5.5+0.4) / sqrt(3);
-    double topH = 5+10;
+    double topH = 5;
     int topFn = 6;
 
 
@@ -114,8 +114,8 @@ public class BatteryTopHolder {
         // Cylinder, holes top
         Geometry3D cylinderHoleTop = Core.cylinder3D(topD, topH, topFn);
         // Translate cylinder, hole bottom
-        Node3D firstTranslateCylinderHoleTop = Core.translate3D(-55+60, 5, -10);
-        Node3D secondTranslateCylinderHoleTop = Core.translate3D(55+60, 5, -10);
+        Node3D firstTranslateCylinderHoleTop = Core.translate3D(-55+60, 5, -2);
+        Node3D secondTranslateCylinderHoleTop = Core.translate3D(55+60, 5, -2);
         firstTranslateCylinderHoleTop.add(cylinderHoleTop);
         secondTranslateCylinderHoleTop.add(cylinderHoleTop);
         res.add(firstTranslateCylinderHoleTop);
