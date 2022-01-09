@@ -19,7 +19,7 @@ public class SevenLongPropellerSquare {
     private Geometry3D geometry3D;
     double radiusDiameter = 2*(5.5+0.4) / sqrt(3);
 
-    // For inf. when center=false
+    // For inf. adjustment when center=false
     int adjustX = -35;
     int adjustY = 5;
     double AdjustZ = -2.5;
@@ -50,10 +50,6 @@ public class SevenLongPropellerSquare {
     double centerHoleMotorHeight = 5;
     double centerHoleMotorRadius = 7.4;
     int centerHoleMotorFragments = 64;
-
-
-
-
 
     public SevenLongPropellerSquare() throws IOException {
 
@@ -138,7 +134,7 @@ public class SevenLongPropellerSquare {
         // Nut holes for screws ends
 
 
-        // Small screwholes for motorarms
+        // Small screw holes for motor-arms
         Geometry3D smallScrewholesForMotorarms = Core.cylinder3D(1.5, 12, 64);
 
         Node3D translateSmallScrewholesForMotorarmsFirstLeft = Core.translate3D(12, 0, -6);
@@ -156,7 +152,7 @@ public class SevenLongPropellerSquare {
         Node3D translateSmallScrewholesForMotorarmsFourthLeft = Core.translate3D(-12, 0, -6);
         translateSmallScrewholesForMotorarmsFourthLeft.add(smallScrewholesForMotorarms);
         res.add(translateSmallScrewholesForMotorarmsFourthLeft);
-        // Small screwholes for motorarms ends
+        // Small screw holes for motor-arms ends
 
         codeBuilder(res);
 }
