@@ -36,25 +36,6 @@ public class ServoMotorMount {
     int mainCubeY = 60;
     int mainHeight = 20;
 
-    /*
-
-    // Cylinder center hole for hull function
-    double centerHoleHeight = 5;
-    double centerHoleRadus = 6;
-    int centerHoleFragments = 64;
-
-    // Cylinder left and right cone
-    double leftAndRightHoleHeight = 5;
-    double leftAndRightHoleDiameter = 4;
-    int leftAndRightHoleFragments = 64;
-
-    // Cylinder center hole for motor fit
-    double centerHoleMotorHeight = 5;
-    double centerHoleMotorRadius = 7.4;
-    int centerHoleMotorFragments = 64;
-
-
-     */
 
 
     public ServoMotorMount() throws IOException {
