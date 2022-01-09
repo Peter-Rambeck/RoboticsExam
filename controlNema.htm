@@ -19,13 +19,16 @@
 			
 	  	}
 
-	 	function sendOrder(msg) {
+	 	function sendOrder(direction,position,speed) {
 			console.log("connecting to "+ host +" "+ port);
 				var x=Math.floor(Math.random() * 10000); 
 			var cname="orderform-"+x;
 			
 			mqtt = new Paho.MQTT.Client(host,port,cname);
-			smsg=msg;
+			smsg=direction;
+			posistionstr=String.fromCharCode(Math.floor(position/256), position%256);
+			speedstr=String.fromCharCode(Math.floor(speed/256), speed%256);
+			smsg=smsg+posistionstr+speedstr;
 			var options = {
 				timeout: 3,
 				onSuccess: send,  
@@ -51,8 +54,8 @@
    <h1>Control Nema17</h1>
    <div class="center">
 	
-   <button onclick="sendOrder('turn left')">Turn left</button>
-   <button onclick="sendOrder('turn right')">Turn right</button>
+   <button onclick="sendOrder('-',400,200)">Turn left</button>
+   <button onclick="sendOrder('+',400,200)">Turn right</button>
 	</div>
    </body>	
 </html>
