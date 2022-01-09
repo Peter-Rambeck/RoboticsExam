@@ -1,6 +1,6 @@
 package org.abstractica.openbuildsystem.Nema17Controller;
 
-    import org.eclipse.paho.client.mqttv3.MqttClient;
+import org.eclipse.paho.client.mqttv3.MqttClient;
 import org.eclipse.paho.client.mqttv3.MqttConnectOptions;
 import org.eclipse.paho.client.mqttv3.MqttException;
 import org.eclipse.paho.client.mqttv3.MqttMessage;
@@ -10,12 +10,18 @@ import org.eclipse.paho.client.mqttv3.persist.MemoryPersistence;
     public class Mqqt_Publisher {
 
 
-        public static void mqqtNemaPublisher(String content) {
+        public static void mqqtNemaPublisher(String direction,int position, int speed) {
             String topic = "insession";
             int qos = 2;
             String broker = "tcp://broker.emqx.io:1883";
             String clientId = "java_publisher";
             MemoryPersistence persistence = new MemoryPersistence();
+            String content=direction;
+            //add position
+            content=content+(char)(position/256)+(char)(position%256);
+             //add speed
+            content=content + (char)(speed/256)+(char)(speed%256);
+
             try {
                 MqttClient client = new MqttClient(broker, clientId, persistence);
 
