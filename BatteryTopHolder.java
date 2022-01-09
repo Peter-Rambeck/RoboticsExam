@@ -19,7 +19,7 @@ public class BatteryTopHolder {
     private final Geometry3D geometry3D;
 
     // Middle cube
-    int middleCubeX = 110;
+    int middleCubeX = 120;
     int middleCubeY = 10;
     int middleCubeHeight = 20;
 
